@@ -1,10 +1,10 @@
 import { Button } from "../Button";
-import { Input } from "../Input";
 
-export function Seach() {
+export function Total(price) {
   return (
     <div>
-      <Input />
+      <h3>Total</h3>
+      <p>{price}</p>
       <Button />
     </div>
   );
