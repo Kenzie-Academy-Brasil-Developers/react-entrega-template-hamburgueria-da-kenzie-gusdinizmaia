@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Input() {
+export function Input({ placeholder }) {
   return (
     <React.Fragment>
-      <input type="text" />
+      <input placeholder={placeholder} type="text" />
     </React.Fragment>
   );
 }

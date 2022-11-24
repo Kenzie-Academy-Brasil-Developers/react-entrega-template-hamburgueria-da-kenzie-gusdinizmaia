@@ -3,9 +3,9 @@ import { Input } from "../Input";
 
 export function Seach() {
   return (
-    <div>
-      <Input />
-      <Button />
+    <div className="seach">
+      <Input placeholder="Digitar Pesquisa" />
+      <Button text="Pesquisar" />
     </div>
   );
 }

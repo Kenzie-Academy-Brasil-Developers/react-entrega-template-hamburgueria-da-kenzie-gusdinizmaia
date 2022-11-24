@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Button() {
+export function Button({ text, onClick }) {
   return (
     <React.Fragment>
-      <button></button>
+      <button onClick={onClick}>{text}</button>
     </React.Fragment>
   );
 }

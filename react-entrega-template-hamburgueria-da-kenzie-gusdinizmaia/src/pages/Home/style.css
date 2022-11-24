@@ -1,0 +1,7 @@
+header,footer,main{
+    padding: 0 8%;
+}
+
+main{
+    height: calc(100vh - 80px);
+}

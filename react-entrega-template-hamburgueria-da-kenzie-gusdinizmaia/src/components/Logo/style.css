@@ -1,0 +1,6 @@
+.logo{
+    color: var(--color-grey-1);
+}
+.logo > span{
+    color: var(--color-secondary-1);
+}

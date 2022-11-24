@@ -2,12 +2,21 @@ body{
     font-family:'Inter', sans-serif;
 }
 
+body,#root{
+    min-height: 100vh;
+    min-width: 100vw;
+    max-width: 100%;
+}
+
 :root{
 
     --color-primary-1:#27AE60;
     --color-primary-2:#93D7AF;
     --color-secondary-1:#EB5757;
-    /* --color-secondary-2:#93D7AF; */
+    /* --color-secondary-2:#93D7AF;
+    */
+
+    --color-white:#FFFFFF;
 
     --color-grey-1:#333333;
     --color-grey-2:#828282;

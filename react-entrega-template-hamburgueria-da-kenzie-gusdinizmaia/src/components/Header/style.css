@@ -1,0 +1,11 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home__header{
+    background-color: var(--color-grey-4);
+    height: 80px;
+}
