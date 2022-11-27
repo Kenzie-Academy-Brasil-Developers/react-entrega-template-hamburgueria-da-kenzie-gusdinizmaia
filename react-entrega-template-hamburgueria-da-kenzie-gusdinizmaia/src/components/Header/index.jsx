@@ -3,11 +3,11 @@ import { NavHeader } from "../NavHeader";
 
 import "./style.css";
 
-export function Header() {
+export function Header({ array, page, callback }) {
   return (
     <header className="home__header">
       <Logo />
-      <NavHeader />
+      <NavHeader array={array} page={page} callback={callback} />
     </header>
   );
 }

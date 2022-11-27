@@ -1,0 +1,19 @@
+
+.list__cart{
+    padding: 15px 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-grey-4);
+}
+.cart__title{
+    background-color: var(--color-primary-1);
+    color: var(--color-white);
+    font: var(--font-title-3);
+    text-align:center;
+
+    width: 100%;
+    padding: 20px 0 ;
+    border-radius: 6px 6px 0 0;
+}

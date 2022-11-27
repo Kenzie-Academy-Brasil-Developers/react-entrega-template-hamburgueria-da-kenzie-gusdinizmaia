@@ -1,22 +1,29 @@
 import React from "react";
-import { Card } from "../Card";
+import { StyledCard } from "./style";
 
-export function ListCards({ array }) {
-  array((array) => {
-    console.log(array);
-  });
+import "./style.css";
+
+export function ListCards({ array, callback }) {
+  function cardAdd(product) {
+    callback((array) => {
+      return [...array, product];
+    });
+  }
+
   return (
-    <React.Fragment>
-      {/* {array.map((elem) => (
-        <Card
+    <ul className="list__products">
+      {array.map((elem) => (
+        <StyledCard
           key={elem.id}
-          product={elem}
           name={elem.name}
           category={elem.category}
           price={elem.price}
           img={elem.img}
+          buttonText="Adicionar"
+          buttonType="buttonPrimary"
+          buttonCallback={(e) => cardAdd(elem)}
         />
-      ))} */}
-    </React.Fragment>
+      ))}
+    </ul>
   );
 }

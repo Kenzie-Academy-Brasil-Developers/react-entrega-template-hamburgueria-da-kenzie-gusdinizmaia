@@ -1,9 +1,16 @@
 import React from "react";
+import { StyledButton } from "./style";
 
-export function Button({ text, onClick }) {
+export function Button({ text, onClick, buttonType, className }) {
   return (
     <React.Fragment>
-      <button onClick={onClick}>{text}</button>
+      <StyledButton
+        buttonType={buttonType}
+        className={className}
+        onClick={onClick}
+      >
+        {text}
+      </StyledButton>
     </React.Fragment>
   );
 }

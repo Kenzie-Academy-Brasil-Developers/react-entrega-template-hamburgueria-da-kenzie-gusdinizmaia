@@ -1,28 +1,31 @@
 import React from "react";
 import { Total } from "../../components/Total";
-import { Button } from "../Button";
-import { Card } from "../Card";
+import { StyledCardCart } from "./style";
 
-export function Cart({ array }) {
-  function total() {
-    const price = array.reduce((acc, current) => acc + current, 0);
-    return price;
+import "./style.css";
+
+export function Cart({ array, callback }) {
+  function cartRemove(indexDelete) {
+    callback((cart) => cart.filter((elem, index) => index !== indexDelete));
   }
 
   return (
     <React.Fragment>
-      <div>
-        {array.map((elem) => (
-          <Card
-            key={elem.id}
-            product={elem}
+      <h1 className="cart__title">Carrinho de Compras</h1>
+      <ul className="list__cart">
+        {array.map((elem, index) => (
+          <StyledCardCart
+            key={index}
             name={elem.name}
             category={elem.category}
             img={elem.img}
+            buttonText="Remover"
+            buttonType="buttonGrey"
+            buttonCallback={(e) => cartRemove(index)}
           />
         ))}
-      </div>
-      <Total price={total()} />
+      </ul>
+      <Total array={array} callback={callback} />
     </React.Fragment>
   );
 }

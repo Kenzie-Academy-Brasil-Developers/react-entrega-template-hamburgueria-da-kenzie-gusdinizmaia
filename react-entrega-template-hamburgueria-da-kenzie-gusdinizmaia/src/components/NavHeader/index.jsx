@@ -1,9 +1,9 @@
 import { Seach } from "../Seach";
 
-export function NavHeader() {
+export function NavHeader({ array, page, callback }) {
   return (
     <nav>
-      <Seach />
+      <Seach array={array} page={page} callback={callback} />
     </nav>
   );
 }

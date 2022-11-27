@@ -4,4 +4,22 @@ header,footer,main{
 
 main{
     height: calc(100vh - 80px);
+
+    display: flex;
+}
+
+.home__main{
+    background-color: var(--color-white);
+
+    padding: 30px 8%;
+    flex-direction: row ;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.container__products{
+
+}
+.container__cart{
+
 }
