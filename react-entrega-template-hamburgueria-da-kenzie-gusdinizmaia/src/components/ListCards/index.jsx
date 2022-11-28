@@ -9,13 +9,9 @@ export function ListCards({ array, callback }) {
       if (array.includes(product)) {
         product.units += 1;
         const newArray = [...array];
-        console.log(product);
-
         return newArray;
       } else {
         product.units = 1;
-        console.log(product);
-
         return [...array, product];
       }
     });

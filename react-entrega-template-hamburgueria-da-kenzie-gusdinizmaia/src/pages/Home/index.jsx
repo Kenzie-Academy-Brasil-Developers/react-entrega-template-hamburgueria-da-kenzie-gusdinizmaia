@@ -31,8 +31,8 @@ export function Home() {
       <main className="home__main">
         {filter ? (
           <section className="container__products">
-            <div>
-              <h1>Resultados para {filter}</h1>
+            <div className="filter">
+              <h1 className="filter__title">Resultados para {filter}</h1>
               <Button
                 onClick={(e) => setFilter(false)}
                 buttonType="buttonPrimary"
