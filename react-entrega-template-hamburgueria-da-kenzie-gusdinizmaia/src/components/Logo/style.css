@@ -1,6 +1,8 @@
 .logo{
     color: var(--color-grey-1);
+    font: var(--font-title-1);
 }
 .logo > span{
     color: var(--color-secondary-1);
+    font: var(--font-title-4);
 }

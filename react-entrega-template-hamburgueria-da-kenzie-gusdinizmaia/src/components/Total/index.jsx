@@ -1,4 +1,7 @@
 import { Button } from "../Button";
+import { ButtonTotal } from "./style";
+
+import "./style.css";
 
 export function Total({ array, callback }) {
   function removeAll() {
@@ -6,7 +9,7 @@ export function Total({ array, callback }) {
   }
 
   function price(array) {
-    const values = array.map((elem) => elem.price);
+    const values = array.map((elem) => elem.price * elem.units);
 
     const newArray = values.reduce((item1, item2) => item1 + item2, 0);
 
@@ -16,10 +19,10 @@ export function Total({ array, callback }) {
     });
   }
   return (
-    <div>
+    <div className="total">
       <h3>Total</h3>
       <p>{price(array)}</p>
-      <Button
+      <ButtonTotal
         onClick={(e) => removeAll()}
         buttonType="buttonPrimary"
         text="Remover todos"

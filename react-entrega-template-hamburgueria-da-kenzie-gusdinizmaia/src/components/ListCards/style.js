@@ -8,8 +8,18 @@ export const StyledCard = styled(Card)`
   border: 2px solid var(--color-grey-3);
   border-radius: var(--radius);
 
-  height: 350px;
-  width: 300px;
+  height: 300px;
+  width: 30%;
+  min-width: 230px;
+  max-width: 300px;
+
+  @media (width < 1300px) {
+    width: 48%;
+  }
+
+  @media (width < 1024px) {
+    margin-bottom: 20px;
+  }
 
   div {
     display: flex;

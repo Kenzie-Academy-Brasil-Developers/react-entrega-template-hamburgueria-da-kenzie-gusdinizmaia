@@ -3,8 +3,6 @@ header,footer,main{
 }
 
 main{
-    height: calc(100vh - 80px);
-
     display: flex;
 }
 
@@ -22,4 +20,43 @@ main{
 }
 .container__cart{
 
+}
+
+@media (width < 1032px){
+
+    .home__main{
+        flex-direction: column;
+        padding-right: 0;
+
+    }
+    .container__cart{
+        padding-right: 8%;
+    }
+    .list__products{
+
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+}
+
+@media (width < 700px){
+
+    .home__header{
+        flex-direction: column;
+
+        padding: 20px 8%;
+        height: auto;
+        gap: 15px;
+
+        position: sticky;
+        top: 0;
+    }
+
+    /* nav,nav >.search{
+        width: 100%;
+    } */
+    .search > input{
+        min-width: 40%;
+    width:60% ;
+    }
 }

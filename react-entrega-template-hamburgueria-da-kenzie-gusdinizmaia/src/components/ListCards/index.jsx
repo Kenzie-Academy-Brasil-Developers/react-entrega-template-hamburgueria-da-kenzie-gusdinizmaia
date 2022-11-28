@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyledCard } from "./style";
 
 import "./style.css";
@@ -6,7 +6,18 @@ import "./style.css";
 export function ListCards({ array, callback }) {
   function cardAdd(product) {
     callback((array) => {
-      return [...array, product];
+      if (array.includes(product)) {
+        product.units += 1;
+        const newArray = [...array];
+        console.log(product);
+
+        return newArray;
+      } else {
+        product.units = 1;
+        console.log(product);
+
+        return [...array, product];
+      }
     });
   }
 

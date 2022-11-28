@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
 
+import "./style.css";
+
 export function Seach({ array, page, callback }) {
   const [inputSeach, setSeach] = useState(false);
 
@@ -25,7 +27,7 @@ export function Seach({ array, page, callback }) {
   }
 
   return (
-    <div className="seach">
+    <div className="search">
       <Input
         onChange={(e) => setSeach(e.target.value)}
         placeholder="Digitar Pesquisa"
