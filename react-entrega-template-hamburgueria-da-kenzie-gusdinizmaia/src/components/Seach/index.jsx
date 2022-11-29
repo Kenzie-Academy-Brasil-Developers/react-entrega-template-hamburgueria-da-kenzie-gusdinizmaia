@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
-
-import "./style.css";
+import { StyledSearch } from "./style";
 
 export function Seach({ array, page, callback }) {
   const [inputSeach, setSeach] = useState(false);
@@ -27,7 +26,7 @@ export function Seach({ array, page, callback }) {
   }
 
   return (
-    <div className="search">
+    <StyledSearch>
       <Input
         onChange={(e) => setSeach(e.target.value)}
         placeholder="Digitar Pesquisa"
@@ -37,6 +36,6 @@ export function Seach({ array, page, callback }) {
         buttonType="buttonPrimary"
         text="Pesquisar"
       />
-    </div>
+    </StyledSearch>
   );
 }

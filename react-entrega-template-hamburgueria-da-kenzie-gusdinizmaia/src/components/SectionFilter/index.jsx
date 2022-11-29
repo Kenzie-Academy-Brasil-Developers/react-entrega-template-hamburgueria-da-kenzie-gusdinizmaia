@@ -1,9 +1,10 @@
 import { Button } from "../Button";
 import { ListCards } from "../ListCards";
+import { StyledSectionFilter } from "./style";
 
-export function Filter({ page, filterName, array, callback }) {
+export function SectionFilter({ page, filterName, array, callback }) {
   return (
-    <section className="container__products">
+    <StyledSectionFilter>
       <div className="filter">
         <h1 className="filter__title">
           Resultados para <span>{filterName}</span>
@@ -15,6 +16,6 @@ export function Filter({ page, filterName, array, callback }) {
         ></Button>
       </div>
       <ListCards array={array} callback={callback} />
-    </section>
+    </StyledSectionFilter>
   );
 }

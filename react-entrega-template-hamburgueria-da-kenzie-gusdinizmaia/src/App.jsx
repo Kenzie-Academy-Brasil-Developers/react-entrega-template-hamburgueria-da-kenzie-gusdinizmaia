@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Home } from "./pages/Home";
-
-import "./styles/reset.css";
-import "./styles/globalStyles.css";
+import { GlobalStyles } from "./styles/globalStyle";
+import { ResetStyles } from "./styles/reset";
 
 function App() {
   return (
     <React.Fragment>
+      <GlobalStyles />
+      <ResetStyles />
       <Home />
     </React.Fragment>
   );

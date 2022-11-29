@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
-import { Cart } from "../../components/Cart";
+import { AsideCart } from "../../components/AsideCart";
 import { api } from "../../services/api";
-import { Filter } from "../../components/SectionFilter";
-import { Products } from "../../components/SectionProducts";
+import { SectionFilter } from "../../components/SectionFilter";
+import { SectionProducts } from "../../components/SectionProducts";
 
-import "./style.css";
+import { StyledHomeMain } from "./style";
 
 export function Home() {
   const [products, setproducts] = useState([]);
@@ -26,19 +26,19 @@ export function Home() {
   return (
     <React.Fragment>
       <Header page={setFilter} array={products} callback={setFilterProducts} />
-      <main className="home__main">
+      <StyledHomeMain className="home__StyledHomeMain">
         {filter ? (
-          <Filter
+          <SectionFilter
             page={setFilter}
             filterName={filter}
             array={filterProducts}
             callback={setCart}
           />
         ) : (
-          <Products array={products} callback={setCart} />
+          <SectionProducts array={products} callback={setCart} />
         )}
-        <Cart array={cart} callback={setCart} />
-      </main>
+        <AsideCart array={cart} callback={setCart} />
+      </StyledHomeMain>
     </React.Fragment>
   );
 }

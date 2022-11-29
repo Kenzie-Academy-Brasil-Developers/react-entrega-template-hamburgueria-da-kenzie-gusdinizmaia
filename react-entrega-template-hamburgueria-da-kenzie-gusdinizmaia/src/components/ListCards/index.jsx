@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { StyledCard } from "./style";
-
-import "./style.css";
+import { Card } from "../Card";
+import { StyledList } from "./style";
 
 export function ListCards({ array, callback }) {
   function cardAdd(product) {
@@ -18,9 +17,9 @@ export function ListCards({ array, callback }) {
   }
 
   return (
-    <ul className="list__products">
+    <StyledList>
       {array.map((elem) => (
-        <StyledCard
+        <Card
           key={elem.id}
           name={elem.name}
           category={elem.category}
@@ -31,6 +30,6 @@ export function ListCards({ array, callback }) {
           buttonCallback={(e) => cardAdd(elem)}
         />
       ))}
-    </ul>
+    </StyledList>
   );
 }

@@ -3,14 +3,14 @@ import { Total } from "../../components/Total";
 import { CardCart } from "../CardCart";
 import { ContainerCart, NoItems } from "./style";
 
-export function Cart({ array, callback }) {
+export function AsideCart({ array, callback }) {
   function cartRemove(indexDelete) {
     callback((cart) => cart.filter((elem, index) => index !== indexDelete));
   }
 
   return (
     <React.Fragment>
-      <ContainerCart className="list__cart">
+      <ContainerCart>
         <h1 className="cart__title">Carrinho de Compras</h1>
         <ul className="list__cart">
           {array.length > 0 ? (

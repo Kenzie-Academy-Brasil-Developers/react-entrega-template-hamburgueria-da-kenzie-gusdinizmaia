@@ -1,9 +1,10 @@
 import { ListCards } from "../ListCards";
+import { StyledSectionProducts } from "./style";
 
-export function Products({ array, callback }) {
+export function SectionProducts({ array, callback }) {
   return (
-    <section className="container__products">
+    <StyledSectionProducts>
       <ListCards array={array} callback={callback} />
-    </section>
+    </StyledSectionProducts>
   );
 }

@@ -3,7 +3,7 @@ import { LogoBase } from "./style";
 
 export function Logo() {
   return (
-    <LogoBase className="logo">
+    <LogoBase>
       <h1>
         Burguer<span>Kenzie</span>
       </h1>

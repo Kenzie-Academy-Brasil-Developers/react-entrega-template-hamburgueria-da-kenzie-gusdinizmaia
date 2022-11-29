@@ -8,8 +8,6 @@ export const ContainerCart = styled.aside`
 
   min-width: 335px;
 
-  background-color: var(--color-grey-4);
-
   > h1 {
     background-color: var(--color-primary-1);
     color: var(--color-white);
@@ -19,6 +17,13 @@ export const ContainerCart = styled.aside`
     width: 100%;
     padding: 20px 0;
     border-radius: 6px 6px 0 0;
+  }
+  ul {
+    background-color: var(--color-grey-4);
+  }
+
+  @media (width < 1024px) {
+    padding: 0 5%;
   }
 `;
 

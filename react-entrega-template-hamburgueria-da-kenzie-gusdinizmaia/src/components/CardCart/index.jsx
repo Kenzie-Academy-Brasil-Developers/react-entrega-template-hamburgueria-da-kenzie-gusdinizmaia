@@ -13,7 +13,7 @@ export function CardCart({
   buttonCallback,
 }) {
   return (
-    <StyledCardCart className={className}>
+    <StyledCardCart>
       <figure>
         <img src={img} alt={name} />
       </figure>
