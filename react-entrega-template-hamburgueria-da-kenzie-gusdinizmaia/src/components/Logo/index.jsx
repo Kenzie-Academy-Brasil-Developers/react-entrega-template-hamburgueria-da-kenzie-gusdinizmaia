@@ -1,9 +1,12 @@
-import "./style.css";
+import React from "react";
+import { LogoBase } from "./style";
 
 export function Logo() {
   return (
-    <h1 className="logo">
-      Burguer<span>Kenzie</span>
-    </h1>
+    <LogoBase className="logo">
+      <h1>
+        Burguer<span>Kenzie</span>
+      </h1>
+    </LogoBase>
   );
 }

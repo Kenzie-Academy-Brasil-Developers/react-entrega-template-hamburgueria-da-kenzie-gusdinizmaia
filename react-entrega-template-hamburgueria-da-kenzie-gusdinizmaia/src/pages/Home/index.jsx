@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Cart } from "../../components/Cart";
-import { ListCards } from "../../components/ListCards";
 import { api } from "../../services/api";
-
-import { Button } from "../../components/Button";
+import { Filter } from "../../components/SectionFilter";
+import { Products } from "../../components/SectionProducts";
 
 import "./style.css";
-import userEvent from "@testing-library/user-event";
 
 export function Home() {
   const [products, setproducts] = useState([]);
@@ -30,25 +28,16 @@ export function Home() {
       <Header page={setFilter} array={products} callback={setFilterProducts} />
       <main className="home__main">
         {filter ? (
-          <section className="container__products">
-            <div className="filter">
-              <h1 className="filter__title">Resultados para {filter}</h1>
-              <Button
-                onClick={(e) => setFilter(false)}
-                buttonType="buttonPrimary"
-                text="Limpar busca"
-              ></Button>
-            </div>
-            <ListCards array={filterProducts} callback={setCart} />
-          </section>
+          <Filter
+            page={setFilter}
+            filterName={filter}
+            array={filterProducts}
+            callback={setCart}
+          />
         ) : (
-          <section className="container__products">
-            <ListCards array={products} callback={setCart} />
-          </section>
+          <Products array={products} callback={setCart} />
         )}
-        <aside className="container__cart">
-          <Cart array={cart} callback={setCart} />
-        </aside>
+        <Cart array={cart} callback={setCart} />
       </main>
     </React.Fragment>
   );
