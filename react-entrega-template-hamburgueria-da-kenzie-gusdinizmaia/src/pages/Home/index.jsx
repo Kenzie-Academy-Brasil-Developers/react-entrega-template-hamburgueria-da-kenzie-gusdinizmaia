@@ -26,7 +26,7 @@ export function Home() {
   return (
     <React.Fragment>
       <Header page={setFilter} array={products} callback={setFilterProducts} />
-      <StyledHomeMain className="home__StyledHomeMain">
+      <StyledHomeMain>
         {filter ? (
           <SectionFilter
             page={setFilter}
