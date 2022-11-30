@@ -1,6 +1,7 @@
 // import { StyledCard } from "./style";
 // import style from "./style.module.css";
 import { Button } from "../Button";
+import { StyledCard } from "./style";
 
 export function Card({
   name,
@@ -13,7 +14,7 @@ export function Card({
   buttonCallback,
 }) {
   return (
-    <li className={className}>
+    <StyledCard>
       <figure>
         <img src={img} alt={name} />
       </figure>
@@ -33,6 +34,6 @@ export function Card({
           text={buttonText}
         />
       </div>
-    </li>
+    </StyledCard>
   );
 }

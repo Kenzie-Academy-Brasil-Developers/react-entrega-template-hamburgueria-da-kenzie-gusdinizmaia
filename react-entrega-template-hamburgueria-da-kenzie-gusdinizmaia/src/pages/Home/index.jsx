@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
-import { Cart } from "../../components/Cart";
-import { ListCards } from "../../components/ListCards";
+import { AsideCart } from "../../components/AsideCart";
 import { api } from "../../services/api";
+import { SectionFilter } from "../../components/SectionFilter";
+import { SectionProducts } from "../../components/SectionProducts";
 
-import { Button } from "../../components/Button";
-
-import "./style.css";
-import userEvent from "@testing-library/user-event";
+import { StyledHomeMain } from "./style";
 
 export function Home() {
   const [products, setproducts] = useState([]);
@@ -28,28 +26,19 @@ export function Home() {
   return (
     <React.Fragment>
       <Header page={setFilter} array={products} callback={setFilterProducts} />
-      <main className="home__main">
+      <StyledHomeMain className="home__StyledHomeMain">
         {filter ? (
-          <section className="container__products">
-            <div className="filter">
-              <h1 className="filter__title">Resultados para {filter}</h1>
-              <Button
-                onClick={(e) => setFilter(false)}
-                buttonType="buttonPrimary"
-                text="Limpar busca"
-              ></Button>
-            </div>
-            <ListCards array={filterProducts} callback={setCart} />
-          </section>
+          <SectionFilter
+            page={setFilter}
+            filterName={filter}
+            array={filterProducts}
+            callback={setCart}
+          />
         ) : (
-          <section className="container__products">
-            <ListCards array={products} callback={setCart} />
-          </section>
+          <SectionProducts array={products} callback={setCart} />
         )}
-        <aside className="container__cart">
-          <Cart array={cart} callback={setCart} />
-        </aside>
-      </main>
+        <AsideCart array={cart} callback={setCart} />
+      </StyledHomeMain>
     </React.Fragment>
   );
 }

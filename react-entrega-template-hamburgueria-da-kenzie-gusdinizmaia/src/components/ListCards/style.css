@@ -1,8 +1,0 @@
-
-.list__products{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 20px;
-}

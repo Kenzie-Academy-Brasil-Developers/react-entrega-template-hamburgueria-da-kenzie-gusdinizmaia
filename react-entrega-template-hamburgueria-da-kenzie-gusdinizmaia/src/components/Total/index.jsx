@@ -1,7 +1,4 @@
-import { Button } from "../Button";
-import { ButtonTotal } from "./style";
-
-import "./style.css";
+import { ButtonTotal, StyledTotal } from "./style";
 
 export function Total({ array, callback }) {
   function removeAll() {
@@ -19,7 +16,7 @@ export function Total({ array, callback }) {
     });
   }
   return (
-    <div className="total">
+    <StyledTotal>
       <h3>Total</h3>
       <p>{price(array)}</p>
       <ButtonTotal
@@ -27,6 +24,6 @@ export function Total({ array, callback }) {
         buttonType="buttonPrimary"
         text="Remover todos"
       />
-    </div>
+    </StyledTotal>
   );
 }

@@ -1,13 +1,12 @@
 import { Logo } from "../Logo";
 import { NavHeader } from "../NavHeader";
-
-import "./style.css";
+import { StyledHeader } from "./style";
 
 export function Header({ array, page, callback }) {
   return (
-    <header className="home__header">
+    <StyledHeader>
       <Logo />
       <NavHeader array={array} page={page} callback={callback} />
-    </header>
+    </StyledHeader>
   );
 }

@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+
 body{
     font-family:'Inter', sans-serif;
 }
@@ -49,3 +53,5 @@ body,#root{
     --color-grey-4:#333333;
     
 }
+
+`;

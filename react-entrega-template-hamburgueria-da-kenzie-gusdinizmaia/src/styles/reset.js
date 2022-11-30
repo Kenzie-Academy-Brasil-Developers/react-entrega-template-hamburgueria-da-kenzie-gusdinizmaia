@@ -1,4 +1,7 @@
-*{
+import { createGlobalStyle } from "styled-components";
+
+export const ResetStyles = createGlobalStyle`
+    *{
     padding: 0;
     margin: 0;
     border: 0;
@@ -7,3 +10,4 @@
     text-decoration: none;
     outline: 0;
 }
+`;
