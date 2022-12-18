@@ -5,13 +5,14 @@ import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { StyledForm } from "./style";
 
-export function FormRegister() {
+export function FormLogin() {
   const navigate = useNavigate();
 
   const formRequired = yup.object().shape({
-    name: yup.string().required(""),
-    password: yup.string().required(""),
+    name: yup.string().required("Insira um nome de usuário"),
+    password: yup.string().required("Insira uma senha"),
   });
 
   const {
@@ -30,14 +31,15 @@ export function FormRegister() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit(a)}>
+      <StyledForm onSubmit={handleSubmit(a)}>
+        <h2>Login</h2>
         <div>
           <InputForm
             register={register}
             type="text"
             text="Nome"
             placeholder="Escreva seu nome aqui"
+            property="name"
           />
         </div>
         <div>
@@ -46,17 +48,18 @@ export function FormRegister() {
             type="password"
             text="Senha"
             placeholder="Escreva sua senha aqui"
+            property="password"
           />
         </div>
         <Button text="Logar" buttonType="buttonPrimary" />
-      </form>
-      <span>Crie sua conta para saborear delícias e matar sua fome!</span>
-      <Button
-        text="Cadastrar"
-        type="submit"
-        onClick={(e) => navigate("/register")}
-        buttonType="buttonGrey"
-      />
+        <span>Crie sua conta para saborear delícias e matar sua fome!</span>
+        <Button
+          text="Cadastrar"
+          type="submit"
+          onClick={(e) => navigate("/register")}
+          buttonType="buttonGrey"
+        />
+      </StyledForm>
     </div>
   );
 }

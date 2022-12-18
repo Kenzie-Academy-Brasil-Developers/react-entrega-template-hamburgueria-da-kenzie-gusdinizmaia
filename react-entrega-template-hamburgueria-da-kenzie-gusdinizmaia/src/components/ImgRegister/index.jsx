@@ -1,6 +1,8 @@
-export function ImgLogin() {
+import { StyledImg } from "./style";
+
+export function ImgRegister() {
   return (
-    <div>
+    <StyledImg>
       <div></div>
       <div></div>
       <div></div>
@@ -19,6 +21,6 @@ export function ImgLogin() {
       <div></div>
       <div></div>
       <div></div>
-    </div>
+    </StyledImg>
   );
 }

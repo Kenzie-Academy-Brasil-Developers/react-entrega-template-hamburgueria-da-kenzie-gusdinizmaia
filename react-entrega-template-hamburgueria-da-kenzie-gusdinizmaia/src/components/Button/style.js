@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
-  padding: 10px 18px;
+  padding: 14px 18px;
   font: var(--font-body-bold);
   border-radius: var(--radius);
   cursor: pointer;
@@ -12,13 +12,12 @@ export const StyledButton = styled.button`
         return css`
           background-color: var(--color-primary-1);
           color: var(--color-white);
+          font: var(--font-body-bold);
         `;
       case "buttonGrey":
         return css`
           color: var(--color-grey-2);
-          padding: 0;
-
-          font: var(--font-caption);
+          font: var(--font-body-bold);
         `;
 
       default:

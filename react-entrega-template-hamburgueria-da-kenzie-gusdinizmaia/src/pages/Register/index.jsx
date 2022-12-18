@@ -1,15 +1,15 @@
 import { Logo } from "../../components/Logo";
 import { ImgRegister } from "../../components/ImgRegister";
 import { FormRegister } from "../../components/FormRegister";
-import { CardLogin } from "../../components/CardLogin";
+import { CardLogo } from "../../components/CardLogo";
 import { StyledPageRegister } from "./style";
 
 export function Register() {
   return (
     <StyledPageRegister>
-      <section>
+      <section className="container__logo">
         <Logo />
-        <CardLogin />
+        <CardLogo />
         <ImgRegister />
       </section>
       <section>
