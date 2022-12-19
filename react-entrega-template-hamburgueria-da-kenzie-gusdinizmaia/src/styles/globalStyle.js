@@ -28,6 +28,7 @@ body,#root{
     --color-grey-2:#828282;
     --color-grey-3:#E0E0E0;
     --color-grey-4:#F5F5F5;
+    --color-grey-wrapper:rgba(51, 51, 51, 0.5);
 
     --radius:6px;
 

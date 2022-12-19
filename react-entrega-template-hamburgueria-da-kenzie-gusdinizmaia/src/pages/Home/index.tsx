@@ -6,6 +6,8 @@ import { SectionFilter } from "../../components/SectionFilter";
 import { SectionProducts } from "../../components/SectionProducts";
 
 import { StyledHomeMain } from "./style";
+import { HomeContext } from "../../contexts/HomeContext";
+import { useContext } from "react";
 
 export function Home() {
   const [products, setproducts] = useState([]);
@@ -13,10 +15,18 @@ export function Home() {
   const [cart, setCart] = useState([]);
   const [filter, setFilter] = useState(false);
 
+  const { modalCart } = useContext(HomeContext);
+
   useEffect(() => {
     function getProducts() {
+      const token = localStorage.getItem("authToken");
+
       api
-        .get("products")
+        .get("/products", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
         .then((resp) => setproducts(resp.data))
         .catch((err) => console.log(err));
     }
@@ -37,7 +47,7 @@ export function Home() {
         ) : (
           <SectionProducts array={products} callback={setCart} />
         )}
-        <AsideCart array={cart} callback={setCart} />
+        {modalCart && <AsideCart array={cart} callback={setCart} />}
       </StyledHomeMain>
     </React.Fragment>
   );

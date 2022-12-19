@@ -6,12 +6,21 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StyledForm } from "./style";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+
+interface iFormLogin {
+  email: string;
+  password: string;
+}
 
 export function FormLogin() {
   const navigate = useNavigate();
 
+  const { login } = useContext(UserContext);
+
   const formRequired = yup.object().shape({
-    name: yup.string().required("Insira um nome de usuário"),
+    email: yup.string().required("Insira um nome de usuário"),
     password: yup.string().required("Insira uma senha"),
   });
 
@@ -19,27 +28,21 @@ export function FormLogin() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<iFormLogin>({
     resolver: yupResolver(formRequired),
   });
 
-  function a() {
-    console.log(register);
-  }
-
-  console.log(errors);
-
   return (
     <div>
-      <StyledForm onSubmit={handleSubmit(a)}>
+      <StyledForm onSubmit={handleSubmit(login)}>
         <h2>Login</h2>
         <div>
           <InputForm
             register={register}
             type="text"
-            text="Nome"
-            placeholder="Escreva seu nome aqui"
-            property="name"
+            text="Email"
+            placeholder="Escreva seu email aqui"
+            property="email"
           />
         </div>
         <div>
@@ -51,7 +54,7 @@ export function FormLogin() {
             property="password"
           />
         </div>
-        <Button text="Logar" buttonType="buttonPrimary" />
+        <Button text="Logar" buttonType="buttonPrimary" type="text" />
         <span>Crie sua conta para saborear delícias e matar sua fome!</span>
         <Button
           text="Cadastrar"

@@ -9,9 +9,9 @@ export const StyledHomeMain = styled.main`
   justify-content: space-between;
   gap: 20px;
 
-  @media (width < 1024px) {
+  /* @media (width < 1024px) {
     flex-direction: column;
 
     padding: 30px 0;
-  }
+  } */
 `;

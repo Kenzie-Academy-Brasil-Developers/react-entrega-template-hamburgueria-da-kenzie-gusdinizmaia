@@ -9,8 +9,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
+interface iFormRegister {
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirm?: string;
+}
+
 export function FormRegister() {
-  const { user, register: postRegister } = useContext(UserContext);
+  const { register: postRegister } = useContext(UserContext);
 
   const formRequired = yup.object().shape({
     name: yup.string().required("Nome inválido"),
@@ -29,11 +36,11 @@ export function FormRegister() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<iFormRegister>({
     resolver: yupResolver(formRequired),
   });
 
-  function e(data) {
+  function e(data: iFormRegister) {
     delete data.passwordConfirm;
 
     postRegister(data);
