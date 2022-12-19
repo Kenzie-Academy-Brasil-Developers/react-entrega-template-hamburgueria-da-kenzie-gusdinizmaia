@@ -15,7 +15,7 @@ export const StyledHeader = styled.header`
     padding: 0 5%;
   }
 
-  @media (width < 600px) {
+  @media (width < 700px) {
     flex-direction: column;
     gap: 15px;
 
