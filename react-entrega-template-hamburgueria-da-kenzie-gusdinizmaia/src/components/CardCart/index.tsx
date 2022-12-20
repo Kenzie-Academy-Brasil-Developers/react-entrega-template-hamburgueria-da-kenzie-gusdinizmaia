@@ -1,5 +1,18 @@
 import { Button } from "../Button";
 import { StyledCardCart } from "./style";
+import { IconRemove } from "../CardCart/style";
+
+interface iCardCart {
+  name: string;
+  category: string;
+  price: number;
+  img: string;
+  count: number;
+  buttonText: string;
+  className: string;
+  buttonType: string;
+  buttonCallback?: (e: React.MouseEvent) => void;
+}
 
 export function CardCart({
   name,
@@ -11,7 +24,7 @@ export function CardCart({
   className,
   buttonType,
   buttonCallback,
-}) {
+}: iCardCart) {
   return (
     <StyledCardCart>
       <figure>
@@ -20,11 +33,7 @@ export function CardCart({
       <div>
         <h1>{name}</h1>
         <span>{category}</span>
-        <Button
-          buttonType={buttonType}
-          onClick={buttonCallback}
-          text={buttonText}
-        />
+        <IconRemove onClick={buttonCallback} />
         <h4>{count}</h4>
       </div>
     </StyledCardCart>

@@ -1,3 +1,4 @@
+import { MdDelete } from "react-icons/md";
 import styled from "styled-components";
 import { StyledCard } from "../ListCards/style";
 
@@ -9,6 +10,8 @@ export const StyledCardCart = styled.li`
 
   width: 100%;
   min-width: 250px;
+
+  position: relative;
 
   figure,
   figure > img {
@@ -39,13 +42,6 @@ export const StyledCardCart = styled.li`
       color: var(--color-grey-2);
     }
 
-    button {
-      position: absolute;
-
-      right: 10px;
-      top: 10px;
-    }
-
     h4 {
       position: absolute;
 
@@ -53,4 +49,13 @@ export const StyledCardCart = styled.li`
       bottom: 10px;
     }
   }
+`;
+
+export const IconRemove = styled(MdDelete)`
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  color: var(--color-grey-2);
+  cursor: pointer;
 `;

@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { HomeContext } from "../../contexts/HomeContext";
 import { Button } from "../Button";
 import { ListCards } from "../ListCards";
 import { StyledSectionFilter } from "./style";
 
-export function SectionFilter({ page, filterName, array, callback }) {
+export function SectionFilter({ filterName, array, callback }) {
+  const { setPageFilter } = useContext(HomeContext);
+
   return (
     <StyledSectionFilter>
       <div className="filter">
@@ -10,7 +14,7 @@ export function SectionFilter({ page, filterName, array, callback }) {
           Resultados para <span>{filterName}</span>
         </h1>
         <Button
-          onClick={(e) => page(false)}
+          onClick={(e) => setPageFilter(false)}
           buttonType="buttonPrimary"
           text="Limpar busca"
         ></Button>

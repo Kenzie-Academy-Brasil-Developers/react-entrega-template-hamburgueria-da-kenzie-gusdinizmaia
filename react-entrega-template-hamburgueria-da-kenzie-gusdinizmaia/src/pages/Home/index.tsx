@@ -10,37 +10,20 @@ import { HomeContext } from "../../contexts/HomeContext";
 import { useContext } from "react";
 
 export function Home() {
-  const [products, setproducts] = useState([]);
+  // const [products, setproducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
 
-  const { modalCart } = useContext(HomeContext);
-
-  useEffect(() => {
-    function getProducts() {
-      const token = localStorage.getItem("authToken");
-
-      api
-        .get("/products", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-        .then((resp) => setproducts(resp.data))
-        .catch((err) => console.log(err));
-    }
-    getProducts();
-  }, []);
+  const { modalCart, pageFilter, products } = useContext(HomeContext);
 
   return (
     <React.Fragment>
-      <Header page={setFilter} array={products} callback={setFilterProducts} />
+      <Header />
       <StyledHomeMain>
-        {filter ? (
+        {pageFilter ? (
           <SectionFilter
-            page={setFilter}
-            filterName={filter}
+            filterName={pageFilter}
             array={filterProducts}
             callback={setCart}
           />

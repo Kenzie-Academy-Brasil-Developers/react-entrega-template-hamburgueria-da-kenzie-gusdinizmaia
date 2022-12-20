@@ -25,7 +25,7 @@ export function FormRegister() {
     password: yup
       .string()
       .required("A senha deverá conter mais 6 caracteres")
-      .matches("^.{6,}$"),
+      .matches(/^.{6,}$/),
     passwordConfirm: yup
       .string()
       .required("")
