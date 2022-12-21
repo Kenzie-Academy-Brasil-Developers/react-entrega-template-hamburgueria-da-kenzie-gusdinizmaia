@@ -44,7 +44,7 @@ export function UserProvider({ children }: iUserContext) {
     api
       .post("/users", user)
       .then((resp) => {
-        if (resp.status === 200) {
+        if (resp.status === 201) {
           console.log(resp);
           alert("deu certo");
           window.localStorage.setItem("authToken", resp.data.accessToken);

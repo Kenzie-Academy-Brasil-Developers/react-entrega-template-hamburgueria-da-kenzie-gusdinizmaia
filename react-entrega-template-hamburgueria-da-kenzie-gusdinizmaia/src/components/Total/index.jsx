@@ -1,9 +1,9 @@
+import { useContext } from "react";
+import { HomeContext } from "../../contexts/HomeContext";
 import { ButtonTotal, StyledTotal } from "./style";
 
-export function Total({ array, callback }) {
-  function removeAll() {
-    callback(() => []);
-  }
+export function Total({ array }) {
+  const { removeAll } = useContext(HomeContext);
 
   function price(array) {
     const values = array.map((elem) => elem.price * elem.units);
@@ -15,12 +15,13 @@ export function Total({ array, callback }) {
       currency: "BRL",
     });
   }
+
   return (
     <StyledTotal>
       <h3>Total</h3>
       <p>{price(array)}</p>
       <ButtonTotal
-        onClick={(e) => removeAll()}
+        onClick={() => removeAll()}
         buttonType="buttonPrimary"
         text="Remover todos"
       />

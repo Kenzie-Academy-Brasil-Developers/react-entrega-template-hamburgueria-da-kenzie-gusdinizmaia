@@ -11,26 +11,18 @@ import { useContext } from "react";
 
 export function Home() {
   // const [products, setproducts] = useState([]);
-  const [filterProducts, setFilterProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  // const [filterProducts, setFilterProducts] = useState([]);
+  // const [cart, setCart] = useState([]);
   // const [filter, setFilter] = useState(false);
 
-  const { modalCart, pageFilter, products } = useContext(HomeContext);
+  const { modalCart, pageFilter } = useContext(HomeContext);
 
   return (
     <React.Fragment>
       <Header />
       <StyledHomeMain>
-        {pageFilter ? (
-          <SectionFilter
-            filterName={pageFilter}
-            array={filterProducts}
-            callback={setCart}
-          />
-        ) : (
-          <SectionProducts array={products} callback={setCart} />
-        )}
-        {modalCart && <AsideCart array={cart} callback={setCart} />}
+        {pageFilter ? <SectionFilter /> : <SectionProducts />}
+        {modalCart && <AsideCart />}
       </StyledHomeMain>
     </React.Fragment>
   );

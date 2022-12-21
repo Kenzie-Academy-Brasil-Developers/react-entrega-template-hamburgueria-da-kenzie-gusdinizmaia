@@ -10,9 +10,22 @@ interface iHomeContext {
   modalCart: boolean;
   setModalCart: React.Dispatch<React.SetStateAction<boolean>>;
   pageFilter: string | null;
-  setPageFilter: React.Dispatch<React.SetStateAction<null>>;
+  setPageFilter: React.Dispatch<React.SetStateAction<string>>;
   filter: (product: string | null) => void;
-  products: Array<object> | null;
+  products: iProduct[];
+  filterProducts: iProduct[];
+  cart: iProduct[];
+  setCart: React.Dispatch<React.SetStateAction<iProduct>>;
+  remove: (index: number) => void;
+  removeAll: () => void;
+}
+
+interface iProduct {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  img: string;
 }
 
 export const HomeContext = createContext({} as iHomeContext);
@@ -21,13 +34,20 @@ export function HomeProvider({ children }: iHomeContextProps) {
   const [modalCart, setModalCart] = useState(false);
   const [pageFilter, setPageFilter] = useState(null);
 
-  const [filterProducts, setFilterProducts] = useState([]);
-  // const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([] as iProduct[]);
+  const [filterProducts, setFilterProducts] = useState([] as iProduct[]);
+  const [products, setProducts] = useState([] as iProduct[]);
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     function getProducts() {
       const token = localStorage.getItem("authToken");
+
+      if (!token) {
+        setLoading(true);
+        return;
+      }
 
       api
         .get("/products", {
@@ -36,27 +56,39 @@ export function HomeProvider({ children }: iHomeContextProps) {
           },
         })
         .then((resp) => setProducts(resp.data))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
     }
     getProducts();
   }, []);
 
-  console.log(products);
-
   function filter(product: string | null): void {
     if (product) {
       const newArray = products.filter((elem) => {
-        console.log(elem["name"]);
-        return elem["name"]
+        return elem.name
           .slice(0, product.length)
           .toLowerCase()
           .includes(product.toLowerCase());
       });
 
-      console.log(newArray);
-      return setFilterProducts(newArray);
+      setPageFilter(product);
+      setFilterProducts(newArray);
+    } else {
+      setFilterProducts([]);
     }
-    return setFilterProducts([]);
+  }
+
+  function remove(index: number) {
+    setCart((cart) =>
+      cart.filter((elem, i) => {
+        console.log(i, index);
+        return i !== index;
+      })
+    );
+  }
+
+  function removeAll() {
+    setCart(() => []);
   }
 
   return (
@@ -68,6 +100,11 @@ export function HomeProvider({ children }: iHomeContextProps) {
         setPageFilter,
         filter,
         products,
+        filterProducts,
+        cart,
+        setCart,
+        remove,
+        removeAll,
       }}
     >
       {children}

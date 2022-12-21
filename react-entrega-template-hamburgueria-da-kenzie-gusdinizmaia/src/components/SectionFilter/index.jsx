@@ -4,8 +4,13 @@ import { Button } from "../Button";
 import { ListCards } from "../ListCards";
 import { StyledSectionFilter } from "./style";
 
-export function SectionFilter({ filterName, array, callback }) {
-  const { setPageFilter } = useContext(HomeContext);
+export function SectionFilter() {
+  const {
+    setPageFilter,
+    filterProducts,
+    setCart,
+    pageFilter: filterName,
+  } = useContext(HomeContext);
 
   return (
     <StyledSectionFilter>
@@ -19,7 +24,7 @@ export function SectionFilter({ filterName, array, callback }) {
           text="Limpar busca"
         ></Button>
       </div>
-      <ListCards array={array} callback={callback} />
+      <ListCards array={filterProducts} callback={setCart} />
     </StyledSectionFilter>
   );
 }

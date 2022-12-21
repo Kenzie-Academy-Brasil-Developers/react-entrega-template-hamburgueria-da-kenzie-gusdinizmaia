@@ -4,12 +4,8 @@ import { HomeContext } from "../../contexts/HomeContext";
 import { CardCart } from "../CardCart";
 import { ContainerCart, NoItems, StyledWrapper, IconClose } from "./style";
 
-export function AsideCart({ array, callback }) {
-  const { setModalCart } = useContext(HomeContext);
-
-  function cartRemove(indexDelete) {
-    callback((cart) => cart.filter((elem, index) => index !== indexDelete));
-  }
+export function AsideCart() {
+  const { setModalCart, cart, remove } = useContext(HomeContext);
 
   return (
     <React.Fragment>
@@ -20,8 +16,8 @@ export function AsideCart({ array, callback }) {
             <IconClose onClick={(e) => setModalCart(false)} />
           </div>
           <ul className="list__cart">
-            {array.length > 0 ? (
-              array.map((elem, index) => (
+            {cart.length > 0 ? (
+              cart.map((elem, index) => (
                 <CardCart
                   key={index}
                   name={elem.name}
@@ -30,7 +26,7 @@ export function AsideCart({ array, callback }) {
                   count={elem.units}
                   buttonText="Remover"
                   buttonType="buttonGrey"
-                  buttonCallback={(e) => cartRemove(index)}
+                  buttonCallback={(e) => remove(index)}
                 />
               ))
             ) : (
@@ -40,7 +36,7 @@ export function AsideCart({ array, callback }) {
               </NoItems>
             )}
           </ul>
-          {array.length > 0 && <Total array={array} callback={callback} />}
+          {cart.length > 0 && <Total array={cart} />}
         </ContainerCart>
       </StyledWrapper>
     </React.Fragment>

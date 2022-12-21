@@ -1,20 +1,32 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Card } from "../Card";
 import { StyledList } from "./style";
 
 export function ListCards({ array, callback }) {
-  function cardAdd(product) {
-    callback((array) => {
-      if (array.includes(product)) {
-        product.units += 1;
-        const newArray = [...array];
-        return newArray;
+  function cardAdd(product, array) {
+    callback((cart) => {
+      const productCart = cart.find((elem) => elem.id === product.id);
+
+      if (productCart) {
+        const newProduct = {
+          ...product,
+          others: [...productCart.others, { ...product }],
+        };
+
+        console.log(newProduct);
+
+        return [...cart, newProduct];
       } else {
-        product.units = 1;
-        return [...array, product];
+        const newProduct = { ...product, others: [{ ...product }] };
+
+        console.log(newProduct);
+
+        return [...cart, newProduct];
       }
     });
   }
+
+  console.log(array);
 
   return (
     <StyledList>
@@ -27,7 +39,7 @@ export function ListCards({ array, callback }) {
           img={elem.img}
           buttonText="Adicionar"
           buttonType="buttonPrimary"
-          buttonCallback={(e) => cardAdd(elem)}
+          buttonCallback={(e) => cardAdd(elem, array)}
         />
       ))}
     </StyledList>
