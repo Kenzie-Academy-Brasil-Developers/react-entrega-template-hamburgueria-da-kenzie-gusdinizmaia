@@ -1,12 +1,13 @@
 import React from "react";
 import { StyledButton } from "./style";
+import { MouseEvent } from "react";
 
 interface iButton {
   text: string;
-  onClick?: (e: React.MouseEvent) => void;
-  buttonType?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  buttonType: string;
   className?: string;
-  type: string;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 export function Button({
@@ -15,7 +16,7 @@ export function Button({
   buttonType,
   className,
   type,
-}: iButton) {
+}: iButton): JSX.Element {
   return (
     <React.Fragment>
       <StyledButton

@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.Suspense>
+  <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <HomeProvider>
@@ -18,5 +18,5 @@ root.render(
         </HomeProvider>
       </UserProvider>
     </BrowserRouter>
-  </React.Suspense>
+  </React.StrictMode>
 );

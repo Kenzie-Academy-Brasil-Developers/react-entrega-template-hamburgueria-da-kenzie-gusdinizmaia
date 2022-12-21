@@ -9,8 +9,6 @@ import { UserContext } from "../../contexts/UserContext";
 export function Login() {
   const { user } = useContext(UserContext);
 
-  console.log(user);
-
   return (
     <StyledPageLogin>
       <section>

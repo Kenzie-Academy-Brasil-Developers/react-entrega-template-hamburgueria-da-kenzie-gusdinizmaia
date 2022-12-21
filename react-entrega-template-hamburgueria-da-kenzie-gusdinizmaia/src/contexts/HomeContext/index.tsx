@@ -1,6 +1,7 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
+import { UserContext } from "../UserContext";
 
 interface iHomeContextProps {
   children: React.ReactNode;
@@ -10,17 +11,17 @@ interface iHomeContext {
   modalCart: boolean;
   setModalCart: React.Dispatch<React.SetStateAction<boolean>>;
   pageFilter: string | null;
-  setPageFilter: React.Dispatch<React.SetStateAction<string>>;
+  setPageFilter: React.Dispatch<React.SetStateAction<string | null>>;
   filter: (product: string | null) => void;
   products: iProduct[];
   filterProducts: iProduct[];
   cart: iProduct[];
-  setCart: React.Dispatch<React.SetStateAction<iProduct>>;
   remove: (index: number) => void;
   removeAll: () => void;
+  add: (product: iProduct) => void;
 }
 
-interface iProduct {
+export interface iProduct {
   id: number;
   name: string;
   category: string;
@@ -32,13 +33,13 @@ export const HomeContext = createContext({} as iHomeContext);
 
 export function HomeProvider({ children }: iHomeContextProps) {
   const [modalCart, setModalCart] = useState(false);
-  const [pageFilter, setPageFilter] = useState(null);
+  const [pageFilter, setPageFilter] = useState<string | null>(null);
 
   const [cart, setCart] = useState([] as iProduct[]);
   const [filterProducts, setFilterProducts] = useState([] as iProduct[]);
   const [products, setProducts] = useState([] as iProduct[]);
 
-  const [loading, setLoading] = useState(false);
+  const { setLoading } = useContext(UserContext);
 
   useEffect(() => {
     function getProducts() {
@@ -56,8 +57,7 @@ export function HomeProvider({ children }: iHomeContextProps) {
           },
         })
         .then((resp) => setProducts(resp.data))
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
+        .catch((err) => console.log(err));
     }
     getProducts();
   }, []);
@@ -78,10 +78,13 @@ export function HomeProvider({ children }: iHomeContextProps) {
     }
   }
 
+  function add(product: iProduct) {
+    setCart((cart) => [...cart, product]);
+  }
+
   function remove(index: number) {
     setCart((cart) =>
       cart.filter((elem, i) => {
-        console.log(i, index);
         return i !== index;
       })
     );
@@ -102,9 +105,9 @@ export function HomeProvider({ children }: iHomeContextProps) {
         products,
         filterProducts,
         cart,
-        setCart,
         remove,
         removeAll,
+        add,
       }}
     >
       {children}

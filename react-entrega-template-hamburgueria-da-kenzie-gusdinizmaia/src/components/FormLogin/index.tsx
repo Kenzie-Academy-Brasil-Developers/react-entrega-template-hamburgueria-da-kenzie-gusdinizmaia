@@ -43,6 +43,7 @@ export function FormLogin() {
             text="Email"
             placeholder="Escreva seu email aqui"
             property="email"
+            errorMessage={errors}
           />
         </div>
         <div>
@@ -52,9 +53,10 @@ export function FormLogin() {
             text="Senha"
             placeholder="Escreva sua senha aqui"
             property="password"
+            errorMessage={errors}
           />
         </div>
-        <Button text="Logar" buttonType="buttonPrimary" type="text" />
+        <Button text="Logar" buttonType="buttonPrimary" />
         <span>Crie sua conta para saborear delícias e matar sua fome!</span>
         <Button
           text="Cadastrar"

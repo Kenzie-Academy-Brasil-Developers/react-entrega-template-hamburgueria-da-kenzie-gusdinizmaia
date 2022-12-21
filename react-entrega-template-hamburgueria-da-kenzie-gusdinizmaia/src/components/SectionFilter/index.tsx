@@ -8,7 +8,6 @@ export function SectionFilter() {
   const {
     setPageFilter,
     filterProducts,
-    setCart,
     pageFilter: filterName,
   } = useContext(HomeContext);
 
@@ -19,12 +18,12 @@ export function SectionFilter() {
           Resultados para <span>{filterName}</span>
         </h1>
         <Button
-          onClick={(e) => setPageFilter(false)}
+          onClick={() => setPageFilter(null)}
           buttonType="buttonPrimary"
           text="Limpar busca"
         ></Button>
       </div>
-      <ListCards array={filterProducts} callback={setCart} />
+      <ListCards array={filterProducts} />
     </StyledSectionFilter>
   );
 }

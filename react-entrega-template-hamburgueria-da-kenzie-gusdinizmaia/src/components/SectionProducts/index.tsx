@@ -4,10 +4,10 @@ import { ListCards } from "../ListCards";
 import { StyledSectionProducts } from "./style";
 
 export function SectionProducts() {
-  const { setCart, products } = useContext(HomeContext);
+  const { products } = useContext(HomeContext);
   return (
     <StyledSectionProducts>
-      <ListCards array={products} callback={setCart} />
+      <ListCards array={products} />
     </StyledSectionProducts>
   );
 }

@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-export const StyledButton = styled.button`
+interface iStyledButton {
+  buttonType: string;
+}
+
+export const StyledButton = styled.button<iStyledButton>`
   padding: 14px 18px;
   font: var(--font-body-bold);
   border-radius: var(--radius);

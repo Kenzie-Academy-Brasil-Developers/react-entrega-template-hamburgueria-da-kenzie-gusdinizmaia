@@ -10,7 +10,7 @@ export function NavHeader() {
   return (
     <StyledNav>
       <Seach />
-      <IconCart onClick={(e) => setModalCart(true)} />
+      <IconCart onClick={() => setModalCart(true)} />
       <Link to="/login">
         <IconExit />
       </Link>

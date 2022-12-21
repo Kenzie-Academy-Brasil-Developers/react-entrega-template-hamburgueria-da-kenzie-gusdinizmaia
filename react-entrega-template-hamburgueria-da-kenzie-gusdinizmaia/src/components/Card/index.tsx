@@ -3,16 +3,25 @@
 import { Button } from "../Button";
 import { StyledCard } from "./style";
 
+interface iCard {
+  name: string;
+  category: string;
+  price: number;
+  img: string;
+  buttonText: string;
+  buttonType: string;
+  buttonCallback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
 export function Card({
   name,
   category,
   price,
   img,
   buttonText,
-  className,
   buttonType,
   buttonCallback,
-}) {
+}: iCard) {
   return (
     <StyledCard>
       <figure>

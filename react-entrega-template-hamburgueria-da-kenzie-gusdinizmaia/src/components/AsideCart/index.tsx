@@ -4,8 +4,22 @@ import { HomeContext } from "../../contexts/HomeContext";
 import { CardCart } from "../CardCart";
 import { ContainerCart, NoItems, StyledWrapper, IconClose } from "./style";
 
+import { iProduct } from "../../contexts/HomeContext";
+
 export function AsideCart() {
-  const { setModalCart, cart, remove } = useContext(HomeContext);
+  const { setModalCart, cart, remove, add } = useContext(HomeContext);
+  // const [cartProductsFilter, setCartProductsFilter] = useState(null);
+  // const [count, setCount] = useState(null);
+
+  function filterCart() {
+    const filter = cart.filter((elem, index) => cart.indexOf(elem) === index);
+    return filter;
+  }
+
+  function countProducts(product: iProduct) {
+    const countProduct = cart.filter((elem) => elem === product);
+    return countProduct.length;
+  }
 
   return (
     <React.Fragment>
@@ -13,20 +27,21 @@ export function AsideCart() {
         <ContainerCart>
           <div className="cart__header">
             <h1 className="cart__title">Carrinho de Compras</h1>
-            <IconClose onClick={(e) => setModalCart(false)} />
+            <IconClose onClick={() => setModalCart(false)} />
           </div>
           <ul className="list__cart">
             {cart.length > 0 ? (
-              cart.map((elem, index) => (
+              filterCart().map((elem, index) => (
                 <CardCart
                   key={index}
                   name={elem.name}
                   category={elem.category}
                   img={elem.img}
-                  count={elem.units}
-                  buttonText="Remover"
-                  buttonType="buttonGrey"
-                  buttonCallback={(e) => remove(index)}
+                  count={countProducts(elem)}
+                  elem={elem}
+                  elemIndex={index}
+                  buttonAdd={add}
+                  buttonRemove={remove}
                 />
               ))
             ) : (

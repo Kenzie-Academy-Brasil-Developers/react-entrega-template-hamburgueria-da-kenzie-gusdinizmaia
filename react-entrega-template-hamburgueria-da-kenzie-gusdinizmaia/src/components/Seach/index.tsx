@@ -5,8 +5,8 @@ import { Input } from "../Input";
 import { StyledSearch } from "./style";
 
 export function Seach() {
-  const [inputSeach, setSeach] = useState(false);
-  const { setPageFilter, filter } = useContext(HomeContext);
+  const [inputSeach, setSeach] = useState(null);
+  const { filter } = useContext(HomeContext);
 
   // function filter(product) {
   //   console.log(product);
