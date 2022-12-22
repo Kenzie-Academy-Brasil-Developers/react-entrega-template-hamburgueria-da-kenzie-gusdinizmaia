@@ -4,11 +4,22 @@ import { HomeContext } from "../../contexts/HomeContext";
 import { CardCart } from "../CardCart";
 import { ContainerCart, NoItems, StyledWrapper, IconClose } from "./style";
 
-export function AsideCart({ array, callback }) {
-  const { setModalCart } = useContext(HomeContext);
+import { iProduct } from "../../contexts/HomeContext";
 
-  function cartRemove(indexDelete) {
-    callback((cart) => cart.filter((elem, index) => index !== indexDelete));
+export function AsideCart() {
+  const { setModalCart, cart, remove, add, removeItem } =
+    useContext(HomeContext);
+  // const [cartProductsFilter, setCartProductsFilter] = useState(null);
+  // const [count, setCount] = useState(null);
+
+  function filterCart() {
+    const filter = cart.filter((elem, index) => cart.indexOf(elem) === index);
+    return filter;
+  }
+
+  function countProducts(product: iProduct) {
+    const countProduct = cart.filter((elem) => elem === product);
+    return countProduct.length;
   }
 
   return (
@@ -17,20 +28,21 @@ export function AsideCart({ array, callback }) {
         <ContainerCart>
           <div className="cart__header">
             <h1 className="cart__title">Carrinho de Compras</h1>
-            <IconClose onClick={(e) => setModalCart(false)} />
+            <IconClose onClick={() => setModalCart(false)} />
           </div>
           <ul className="list__cart">
-            {array.length > 0 ? (
-              array.map((elem, index) => (
+            {cart.length > 0 ? (
+              filterCart().map((elem, index) => (
                 <CardCart
                   key={index}
                   name={elem.name}
                   category={elem.category}
                   img={elem.img}
-                  count={elem.units}
-                  buttonText="Remover"
-                  buttonType="buttonGrey"
-                  buttonCallback={(e) => cartRemove(index)}
+                  count={countProducts(elem)}
+                  elem={elem}
+                  buttonAdd={add}
+                  buttonRemove={remove}
+                  buttonRemoveItem={removeItem}
                 />
               ))
             ) : (
@@ -40,7 +52,7 @@ export function AsideCart({ array, callback }) {
               </NoItems>
             )}
           </ul>
-          {array.length > 0 && <Total array={array} callback={callback} />}
+          {cart.length > 0 && <Total array={cart} />}
         </ContainerCart>
       </StyledWrapper>
     </React.Fragment>

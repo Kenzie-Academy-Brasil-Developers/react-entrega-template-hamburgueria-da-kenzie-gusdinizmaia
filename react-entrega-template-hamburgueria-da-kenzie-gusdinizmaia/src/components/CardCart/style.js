@@ -1,14 +1,18 @@
+import { MdDelete } from "react-icons/md";
 import styled from "styled-components";
 import { StyledCard } from "../ListCards/style";
 
 export const StyledCardCart = styled.li`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+
   padding: 10px;
 
   width: 100%;
   min-width: 250px;
+
+  position: relative;
 
   figure,
   figure > img {
@@ -19,7 +23,7 @@ export const StyledCardCart = styled.li`
     background-color: var(--color-grey-3);
   }
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -38,19 +42,34 @@ export const StyledCardCart = styled.li`
       font: var(--font-caption);
       color: var(--color-grey-2);
     }
+  }
+`;
 
-    button {
-      position: absolute;
+export const IconRemove = styled(MdDelete)`
+  position: absolute;
+  top: 0;
+  right: 0;
 
-      right: 10px;
-      top: 10px;
-    }
+  color: var(--color-grey-2);
+  cursor: pointer;
+`;
 
-    h4 {
-      position: absolute;
+export const StyledCount = styled.div`
+  display: flex;
+  flex-direction: row;
 
-      right: 10px;
-      bottom: 10px;
-    }
+  font: var(--font-body);
+
+  > p {
+    background-color: var(--color-grey-3);
+    color: var(--color-secondary-1);
+    width: 30px;
+    text-align: center;
+
+    cursor: pointer;
+  }
+  > h4 {
+    width: 40px;
+    text-align: center;
   }
 `;

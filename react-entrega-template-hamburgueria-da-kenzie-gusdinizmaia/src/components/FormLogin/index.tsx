@@ -41,8 +41,9 @@ export function FormLogin() {
             register={register}
             type="text"
             text="Email"
-            placeholder="Escreva seu email aqui"
+            placeholder="Escreva seu email aqui..."
             property="email"
+            errorMessage={errors}
           />
         </div>
         <div>
@@ -50,11 +51,12 @@ export function FormLogin() {
             register={register}
             type="password"
             text="Senha"
-            placeholder="Escreva sua senha aqui"
+            placeholder="Escreva sua senha aqui..."
             property="password"
+            errorMessage={errors}
           />
         </div>
-        <Button text="Logar" buttonType="buttonPrimary" type="text" />
+        <Button text="Logar" buttonType="buttonPrimary" />
         <span>Crie sua conta para saborear delícias e matar sua fome!</span>
         <Button
           text="Cadastrar"

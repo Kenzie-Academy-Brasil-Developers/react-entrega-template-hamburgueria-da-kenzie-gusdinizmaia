@@ -5,6 +5,9 @@ export const StyledForm = styled.form`
   flex-direction: column;
   gap: 20px;
 
+  box-shadow: 0px 0px 30px -20px #00000040;
+  border: 2px solid #f5f5f5;
+  padding: 20px;
   h2 {
     font: var(--font-title-2);
   }

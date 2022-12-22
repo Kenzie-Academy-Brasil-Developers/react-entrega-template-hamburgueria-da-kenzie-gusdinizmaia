@@ -21,6 +21,7 @@ export const ContainerCart = styled.div`
     background-color: var(--color-primary-1);
     color: var(--color-white);
     padding: 20px;
+    border-radius: var(--radius) var(--radius) 0 0;
     > h1 {
       font: var(--font-title-3);
 
@@ -34,8 +35,9 @@ export const ContainerCart = styled.div`
     padding: 0;
   }
 
-  @media (width < 1024px) {
+  @media (width < 650px) {
     padding: 0 5%;
+    width: 80%;
   }
 `;
 

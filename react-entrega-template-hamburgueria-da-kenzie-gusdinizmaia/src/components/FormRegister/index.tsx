@@ -1,9 +1,8 @@
 import { InputForm } from "../InputForm";
 import { Button } from "../Button";
-import { Link } from "react-router-dom";
-import { StyledFormRegister } from "./style";
+import { StyledFormRegister, StyledLink } from "./style";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
@@ -25,7 +24,7 @@ export function FormRegister() {
     password: yup
       .string()
       .required("A senha deverá conter mais 6 caracteres")
-      .matches("^.{6,}$"),
+      .matches(/^.{6,}$/),
     passwordConfirm: yup
       .string()
       .required("")
@@ -40,53 +39,48 @@ export function FormRegister() {
     resolver: yupResolver(formRequired),
   });
 
-  function e(data: iFormRegister) {
+  const submit: SubmitHandler<iFormRegister> = (data) => {
     delete data.passwordConfirm;
 
     postRegister(data);
-  }
-
-  console.log(errors);
+  };
 
   return (
     <div>
-      <StyledFormRegister onSubmit={handleSubmit(e)}>
+      <StyledFormRegister onSubmit={handleSubmit(submit)}>
         <h2>Cadastro</h2>
-        <Link
-          //   text="Cadastrar"
-          //   onClick={(e) => navigate("/Login")}
-          //   buttonType="buttonGrey"
-          to="/login"
-        >
-          Retornar para o Login
-        </Link>
+        <StyledLink to="/login">Retornar para o Login</StyledLink>
         <InputForm
           type="text"
           text="Nome"
-          placeholder="Escreva seu nome aqui"
           property="name"
+          placeholder="Escreva aqui seu nome ..."
           register={register}
+          errorMessage={errors}
         />
         <InputForm
           type="text"
           text="Email"
-          placeholder="Escreva sua email aqui"
+          placeholder="Escreva aqui seu email..."
           property="email"
           register={register}
+          errorMessage={errors}
         />
         <InputForm
           type="password"
           text="Senha"
-          placeholder="Senha"
+          placeholder="Escreva aqui sua senha..."
           property="password"
           register={register}
+          errorMessage={errors}
         />
         <InputForm
           type="password"
           text="Confirmar Senha"
-          placeholder="Confirmar Senha"
+          placeholder="Escreva novamente sua senha..."
           property="passwordConfirm"
           register={register}
+          errorMessage={errors}
         />
         <Button text="Cadastrar" type="submit" buttonType="buttonGrey" />
       </StyledFormRegister>
