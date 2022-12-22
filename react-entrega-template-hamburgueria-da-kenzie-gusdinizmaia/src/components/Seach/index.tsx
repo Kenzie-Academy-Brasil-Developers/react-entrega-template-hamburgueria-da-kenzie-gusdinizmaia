@@ -8,10 +8,6 @@ export function Seach() {
   const [inputSeach, setSeach] = useState(null);
   const { filter } = useContext(HomeContext);
 
-  // function filter(product) {
-  //   console.log(product);
-  // }
-
   return (
     <StyledSearch>
       <Input
@@ -19,7 +15,9 @@ export function Seach() {
         placeholder="Digitar Pesquisa"
       />
       <Button
-        onClick={(e) => filter(inputSeach)}
+        onClick={(e) => {
+          filter(inputSeach);
+        }}
         buttonType="buttonPrimary"
         text="Pesquisar"
       />

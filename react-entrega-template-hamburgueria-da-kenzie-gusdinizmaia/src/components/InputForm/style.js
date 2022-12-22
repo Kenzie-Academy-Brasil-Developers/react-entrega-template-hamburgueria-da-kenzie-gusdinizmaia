@@ -16,9 +16,11 @@ export const StyledInput = styled.div`
   }
 
   > input {
-    border: 1px solid black;
+    font: var(--font-body);
+
+    border: 1.75px solid black;
     width: 100%;
-    padding: 20px 15px;
+    padding: 17px 15px;
     border-radius: var(--radius);
   }
 

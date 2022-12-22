@@ -7,7 +7,8 @@ export function CardLogo() {
         <IconCart />
       </div>
       <p>
-        A vida é como um sanduíche, é preciso recheá-la com os melhores
+        A vida é como um sanduíche, é preciso recheá-la com os
+        <span> melhores </span>
         ingredientes.
       </p>
     </StyledCard>

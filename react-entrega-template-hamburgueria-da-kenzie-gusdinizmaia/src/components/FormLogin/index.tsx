@@ -41,7 +41,7 @@ export function FormLogin() {
             register={register}
             type="text"
             text="Email"
-            placeholder="Escreva seu email aqui"
+            placeholder="Escreva seu email aqui..."
             property="email"
             errorMessage={errors}
           />
@@ -51,7 +51,7 @@ export function FormLogin() {
             register={register}
             type="password"
             text="Senha"
-            placeholder="Escreva sua senha aqui"
+            placeholder="Escreva sua senha aqui..."
             property="password"
             errorMessage={errors}
           />

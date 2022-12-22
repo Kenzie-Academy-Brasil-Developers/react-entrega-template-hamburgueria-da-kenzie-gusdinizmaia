@@ -5,8 +5,4 @@ export const StyledSectionProducts = styled.section`
   display: flex;
   flex-direction: column;
   gap: 25px;
-
-  @media (width < 1024px) {
-    padding-left: 5%;
-  }
 `;

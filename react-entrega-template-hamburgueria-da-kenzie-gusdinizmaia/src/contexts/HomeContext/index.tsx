@@ -1,6 +1,5 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { UserContext } from "../UserContext";
 
@@ -20,6 +19,7 @@ interface iHomeContext {
   remove: (index: number) => void;
   removeAll: () => void;
   add: (product: iProduct) => void;
+  removeItem: (product: iProduct) => void;
 }
 
 export interface iProduct {
@@ -89,10 +89,19 @@ export function HomeProvider({ children }: iHomeContextProps) {
     setCart((cart) => [...cart, product]);
   }
 
-  function remove(index: number) {
+  function remove(id: number) {
+    setCart((cart) => {
+      const newArray = [...cart];
+      const index = newArray.findIndex((elem) => elem.id === id);
+      newArray.splice(index, 1);
+      return [...newArray];
+    });
+  }
+
+  function removeItem(product: iProduct) {
     setCart((cart) =>
-      cart.filter((elem, i) => {
-        return i !== index;
+      cart.filter((elem) => {
+        return elem !== product;
       })
     );
   }
@@ -115,6 +124,7 @@ export function HomeProvider({ children }: iHomeContextProps) {
         remove,
         removeAll,
         add,
+        removeItem,
       }}
     >
       {children}

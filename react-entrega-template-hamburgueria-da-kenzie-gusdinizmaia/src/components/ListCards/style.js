@@ -7,9 +7,9 @@ export const StyledList = styled.ul`
   align-items: flex-start;
   gap: 15px;
 
-  /* @media (width < 1024px) {
+  @media (width < 650px) {
     flex-wrap: nowrap;
-
+    padding: 0 20px;
     overflow-x: scroll;
-  } */
+  }
 `;

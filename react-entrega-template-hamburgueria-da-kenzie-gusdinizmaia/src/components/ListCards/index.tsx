@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { HomeContext } from "../../contexts/HomeContext";
 import { Card } from "../Card";
 import { StyledList } from "./style";

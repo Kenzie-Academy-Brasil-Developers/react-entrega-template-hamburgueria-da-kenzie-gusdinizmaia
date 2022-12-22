@@ -7,7 +7,8 @@ import { ContainerCart, NoItems, StyledWrapper, IconClose } from "./style";
 import { iProduct } from "../../contexts/HomeContext";
 
 export function AsideCart() {
-  const { setModalCart, cart, remove, add } = useContext(HomeContext);
+  const { setModalCart, cart, remove, add, removeItem } =
+    useContext(HomeContext);
   // const [cartProductsFilter, setCartProductsFilter] = useState(null);
   // const [count, setCount] = useState(null);
 
@@ -39,9 +40,9 @@ export function AsideCart() {
                   img={elem.img}
                   count={countProducts(elem)}
                   elem={elem}
-                  elemIndex={index}
                   buttonAdd={add}
                   buttonRemove={remove}
+                  buttonRemoveItem={removeItem}
                 />
               ))
             ) : (

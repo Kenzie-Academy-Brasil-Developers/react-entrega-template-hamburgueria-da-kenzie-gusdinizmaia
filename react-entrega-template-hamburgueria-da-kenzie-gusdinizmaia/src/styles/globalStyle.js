@@ -15,13 +15,11 @@ body,#root{
 }
 
 :root{
-
     --color-primary-1:#27AE60;
     --color-primary-2:#93D7AF;
     --color-secondary-1:#EB5757;
     /* --color-secondary-2:#93D7AF;
     */
-
     --color-white:#FFFFFF;
 
     --color-grey-1:#333333;

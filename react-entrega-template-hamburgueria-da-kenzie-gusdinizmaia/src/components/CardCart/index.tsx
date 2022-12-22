@@ -1,6 +1,7 @@
 import { StyledCardCart } from "./style";
 import { IconRemove } from "../CardCart/style";
 import { iProduct } from "../../contexts/HomeContext";
+import { StyledCount } from "./style";
 
 interface iCardCart {
   name: string;
@@ -9,9 +10,9 @@ interface iCardCart {
   img: string;
   count: number;
   elem: iProduct;
-  elemIndex: number;
   buttonAdd: (elem: iProduct) => void;
   buttonRemove: (elemIndex: number) => void;
+  buttonRemoveItem: (elem: iProduct) => void;
 }
 
 export function CardCart({
@@ -20,9 +21,9 @@ export function CardCart({
   img,
   count,
   elem,
-  elemIndex,
   buttonAdd,
   buttonRemove,
+  buttonRemoveItem,
 }: iCardCart) {
   return (
     <StyledCardCart>
@@ -32,11 +33,12 @@ export function CardCart({
       <div>
         <h1>{name}</h1>
         <span>{category}</span>
-        <div>
-          <p onClick={() => buttonRemove(elemIndex)}>{"<"}</p>
+        <StyledCount>
+          <p onClick={() => buttonRemove(elem.id)}>{"-"}</p>
           <h4>{count}</h4>
-          <p onClick={() => buttonAdd(elem)}>{">"}</p>
-        </div>
+          <p onClick={() => buttonAdd(elem)}>{"+"}</p>
+        </StyledCount>
+        <IconRemove onClick={() => buttonRemoveItem(elem)} />
       </div>
     </StyledCardCart>
   );

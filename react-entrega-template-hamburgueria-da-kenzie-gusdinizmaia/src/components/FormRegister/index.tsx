@@ -1,7 +1,6 @@
 import { InputForm } from "../InputForm";
 import { Button } from "../Button";
-import { Link } from "react-router-dom";
-import { StyledFormRegister } from "./style";
+import { StyledFormRegister, StyledLink } from "./style";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -50,19 +49,19 @@ export function FormRegister() {
     <div>
       <StyledFormRegister onSubmit={handleSubmit(submit)}>
         <h2>Cadastro</h2>
-        <Link to="/login">Retornar para o Login</Link>
+        <StyledLink to="/login">Retornar para o Login</StyledLink>
         <InputForm
           type="text"
           text="Nome"
           property="name"
-          placeholder="casa"
+          placeholder="Escreva aqui seu nome ..."
           register={register}
           errorMessage={errors}
         />
         <InputForm
           type="text"
           text="Email"
-          placeholder="Escreva sua email aqui"
+          placeholder="Escreva aqui seu email..."
           property="email"
           register={register}
           errorMessage={errors}
@@ -70,7 +69,7 @@ export function FormRegister() {
         <InputForm
           type="password"
           text="Senha"
-          placeholder="Senha"
+          placeholder="Escreva aqui sua senha..."
           property="password"
           register={register}
           errorMessage={errors}
@@ -78,7 +77,7 @@ export function FormRegister() {
         <InputForm
           type="password"
           text="Confirmar Senha"
-          placeholder="Confirmar Senha"
+          placeholder="Escreva novamente sua senha..."
           property="passwordConfirm"
           register={register}
           errorMessage={errors}

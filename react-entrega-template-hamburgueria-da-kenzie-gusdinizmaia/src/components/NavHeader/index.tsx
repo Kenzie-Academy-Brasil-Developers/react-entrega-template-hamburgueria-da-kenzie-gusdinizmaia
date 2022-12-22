@@ -5,13 +5,16 @@ import { useContext } from "react";
 import { HomeContext } from "../../contexts/HomeContext";
 
 export function NavHeader() {
-  const { setModalCart } = useContext(HomeContext);
+  const { setModalCart, cart } = useContext(HomeContext);
 
   return (
     <StyledNav>
       <Seach />
       <IconCart onClick={() => setModalCart(true)} />
-      <Link to="/login">
+      <div className="count__products">
+        <p>{cart.length} </p>
+      </div>
+      <Link onClick={() => localStorage.removeItem("authToken")} to="/login">
         <IconExit />
       </Link>
     </StyledNav>

@@ -15,4 +15,8 @@ export const StyledImg = styled.div`
     padding: 3px;
     border-radius: 100%;
   }
+
+  @media (width < 650px) {
+    display: none;
+  }
 `;

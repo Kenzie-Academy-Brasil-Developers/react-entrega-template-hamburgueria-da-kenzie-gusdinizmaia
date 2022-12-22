@@ -5,7 +5,8 @@ import { StyledCard } from "../ListCards/style";
 export const StyledCardCart = styled.li`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+
   padding: 10px;
 
   width: 100%;
@@ -22,7 +23,7 @@ export const StyledCardCart = styled.li`
     background-color: var(--color-grey-3);
   }
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -41,13 +42,6 @@ export const StyledCardCart = styled.li`
       font: var(--font-caption);
       color: var(--color-grey-2);
     }
-
-    h4 {
-      position: absolute;
-
-      right: 10px;
-      bottom: 10px;
-    }
   }
 `;
 
@@ -58,4 +52,24 @@ export const IconRemove = styled(MdDelete)`
 
   color: var(--color-grey-2);
   cursor: pointer;
+`;
+
+export const StyledCount = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  font: var(--font-body);
+
+  > p {
+    background-color: var(--color-grey-3);
+    color: var(--color-secondary-1);
+    width: 30px;
+    text-align: center;
+
+    cursor: pointer;
+  }
+  > h4 {
+    width: 40px;
+    text-align: center;
+  }
 `;
