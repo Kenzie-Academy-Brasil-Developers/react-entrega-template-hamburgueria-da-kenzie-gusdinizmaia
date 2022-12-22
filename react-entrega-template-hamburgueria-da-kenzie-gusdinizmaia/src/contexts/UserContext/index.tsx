@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ export const UserContext = createContext({} as iUserContextProps);
 
 export function UserProvider({ children }: iUserContext) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -34,11 +34,14 @@ export function UserProvider({ children }: iUserContext) {
 
           setTimeout(() => navigate("/home"), 3000);
 
-          return setUser(resp.data.user);
+          setUser(resp.data.user);
+        } else if (resp.status === 401) {
+          toast.success("Usuário logado com sucesso");
         }
         return toast.error(resp.data.message);
       })
       .catch((err) => {
+        console.log(err);
         return toast.error(err.response.data);
       });
   }

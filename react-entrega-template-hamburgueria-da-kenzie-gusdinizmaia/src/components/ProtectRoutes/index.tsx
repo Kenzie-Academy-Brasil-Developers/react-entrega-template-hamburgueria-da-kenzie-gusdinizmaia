@@ -9,5 +9,5 @@ export function ProtectRoutes() {
     return null;
   }
 
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  return user ? <Outlet /> : <Navigate to="/" />;
 }

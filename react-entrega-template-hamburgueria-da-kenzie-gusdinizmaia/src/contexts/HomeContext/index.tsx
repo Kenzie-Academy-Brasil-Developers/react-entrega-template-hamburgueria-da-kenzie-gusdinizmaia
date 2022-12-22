@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { UserContext } from "../UserContext";
 
@@ -39,14 +40,14 @@ export function HomeProvider({ children }: iHomeContextProps) {
   const [filterProducts, setFilterProducts] = useState([] as iProduct[]);
   const [products, setProducts] = useState([] as iProduct[]);
 
-  const { setLoading } = useContext(UserContext);
+  const { setLoading, user } = useContext(UserContext);
 
   useEffect(() => {
     function getProducts() {
       const token = localStorage.getItem("authToken");
 
       if (!token) {
-        setLoading(true);
+        setLoading(false);
         return;
       }
 
@@ -56,11 +57,17 @@ export function HomeProvider({ children }: iHomeContextProps) {
             authorization: `Bearer ${token}`,
           },
         })
-        .then((resp) => setProducts(resp.data))
-        .catch((err) => console.log(err));
+        .then((resp) => {
+          setProducts(resp.data);
+        })
+        .catch(
+          (err) =>
+            err.response.status === 401 && localStorage.removeItem("authToken")
+        )
+        .finally(() => setLoading(false));
     }
     getProducts();
-  }, []);
+  }, [user]);
 
   function filter(product: string | null): void {
     if (product) {
