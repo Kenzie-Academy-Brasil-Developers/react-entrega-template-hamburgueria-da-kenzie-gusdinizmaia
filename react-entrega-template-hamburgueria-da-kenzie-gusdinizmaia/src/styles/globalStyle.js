@@ -15,19 +15,18 @@ body,#root{
 }
 
 :root{
-
     --color-primary-1:#27AE60;
     --color-primary-2:#93D7AF;
     --color-secondary-1:#EB5757;
     /* --color-secondary-2:#93D7AF;
     */
-
     --color-white:#FFFFFF;
 
     --color-grey-1:#333333;
     --color-grey-2:#828282;
     --color-grey-3:#E0E0E0;
     --color-grey-4:#F5F5F5;
+    --color-grey-wrapper:rgba(51, 51, 51, 0.5);
 
     --radius:6px;
 
