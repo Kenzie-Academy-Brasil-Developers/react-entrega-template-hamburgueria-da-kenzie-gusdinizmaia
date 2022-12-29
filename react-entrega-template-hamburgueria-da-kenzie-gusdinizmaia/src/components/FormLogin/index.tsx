@@ -20,7 +20,7 @@ export function FormLogin() {
   const { login } = useContext(UserContext);
 
   const formRequired = yup.object().shape({
-    email: yup.string().required("Insira um nome de usuário"),
+    email: yup.string().required("Insira seu e-mail").email("E-mail inválido"),
     password: yup.string().required("Insira uma senha"),
   });
 
@@ -56,11 +56,10 @@ export function FormLogin() {
             errorMessage={errors}
           />
         </div>
-        <Button text="Logar" buttonType="buttonPrimary" />
+        <Button text="Logar" type="submit" buttonType="buttonPrimary" />
         <span>Crie sua conta para saborear delícias e matar sua fome!</span>
         <Button
           text="Cadastrar"
-          type="submit"
           onClick={(e) => navigate("/register")}
           buttonType="buttonGrey"
         />

@@ -14,13 +14,33 @@ interface iUserContextProps {
   user: object | null;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  width: number;
+  height: number;
 }
 
 export const UserContext = createContext({} as iUserContextProps);
 
+function useHookSize() {
+  const [size, setSize] = useState([0, 0]);
+
+  useEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+
+    window.addEventListener("resize", updateSize);
+    updateSize();
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
+
 export function UserProvider({ children }: iUserContext) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [width, height] = useHookSize();
 
   const navigate = useNavigate();
 
@@ -33,7 +53,6 @@ export function UserProvider({ children }: iUserContext) {
           window.localStorage.setItem("authToken", resp.data.accessToken);
 
           setTimeout(() => navigate("/home"), 3000);
-
           setUser(resp.data.user);
         } else if (resp.status === 401) {
           toast.success("Usuário logado com sucesso");
@@ -67,7 +86,16 @@ export function UserProvider({ children }: iUserContext) {
 
   return (
     <UserContext.Provider
-      value={{ login, register, setUser, user, loading, setLoading }}
+      value={{
+        login,
+        register,
+        setUser,
+        user,
+        loading,
+        setLoading,
+        width,
+        height,
+      }}
     >
       {children}
     </UserContext.Provider>

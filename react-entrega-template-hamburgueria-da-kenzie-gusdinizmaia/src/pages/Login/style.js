@@ -22,10 +22,11 @@ export const StyledPageLogin = styled.main`
     gap: 35px;
   }
 
-  @media (width <650px) {
+  @media (width <750px) {
     flex-direction: column-reverse;
 
     padding: 40px 5%;
+    gap: 35px;
 
     section {
       width: 100%;

@@ -59,6 +59,7 @@ export function HomeProvider({ children }: iHomeContextProps) {
         })
         .then((resp) => {
           setProducts(resp.data);
+          resp.status === 401 && localStorage.removeItem("authToken");
         })
         .catch(
           (err) =>

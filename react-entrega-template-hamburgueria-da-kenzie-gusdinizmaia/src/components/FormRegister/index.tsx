@@ -20,7 +20,7 @@ export function FormRegister() {
 
   const formRequired = yup.object().shape({
     name: yup.string().required("Nome inválido"),
-    email: yup.string().required("Email inválido"),
+    email: yup.string().required("Email obrigatório").email("E-mail inválido"),
     password: yup
       .string()
       .required("A senha deverá conter mais 6 caracteres")

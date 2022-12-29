@@ -16,7 +16,7 @@ export const StyledImg = styled.div`
     border-radius: 100%;
   }
 
-  @media (width < 650px) {
+  @media (width < 750px) {
     display: none;
   }
 `;
