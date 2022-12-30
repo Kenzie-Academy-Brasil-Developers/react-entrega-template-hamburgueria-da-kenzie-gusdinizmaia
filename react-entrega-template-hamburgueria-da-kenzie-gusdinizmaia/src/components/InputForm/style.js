@@ -17,8 +17,9 @@ export const StyledInput = styled.div`
 
   > input {
     font: var(--font-body);
+    border: 1.75px ${(props) => props.theme.border ?? "black"} solid;
+    color: var(--color-grey-1);
 
-    border: 1.75px solid black;
     width: 100%;
     padding: 17px 15px;
     border-radius: var(--radius);
@@ -31,3 +32,11 @@ export const StyledInput = styled.div`
     color: var(--color-negative);
   }
 `;
+
+export const theme = {
+  border: "var(--color-negative)",
+};
+
+export const invertTheme = () => ({
+  border: "var(--color-grey-2)",
+});

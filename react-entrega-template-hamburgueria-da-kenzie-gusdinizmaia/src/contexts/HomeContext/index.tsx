@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { UserContext } from "../UserContext";
 
@@ -59,6 +60,7 @@ export function HomeProvider({ children }: iHomeContextProps) {
         })
         .then((resp) => {
           setProducts(resp.data);
+          resp.status === 401 && localStorage.removeItem("authToken");
         })
         .catch(
           (err) =>
@@ -87,6 +89,11 @@ export function HomeProvider({ children }: iHomeContextProps) {
 
   function add(product: iProduct) {
     setCart((cart) => [...cart, product]);
+    toast.success("Item adicionado ao carrinho", {
+      autoClose: 2000,
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+    });
   }
 
   function remove(id: number) {
@@ -96,6 +103,11 @@ export function HomeProvider({ children }: iHomeContextProps) {
       newArray.splice(index, 1);
       return [...newArray];
     });
+    toast.success("Item removido do carrinho", {
+      autoClose: 2000,
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+    });
   }
 
   function removeItem(product: iProduct) {
@@ -104,10 +116,20 @@ export function HomeProvider({ children }: iHomeContextProps) {
         return elem !== product;
       })
     );
+    toast.success("Item removido do carrinho", {
+      autoClose: 2000,
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+    });
   }
 
   function removeAll() {
     setCart(() => []);
+    toast.success("Todos os itens removido do carrinho", {
+      autoClose: 2000,
+      pauseOnHover: false,
+      pauseOnFocusLoss: false,
+    });
   }
 
   return (

@@ -5,4 +5,8 @@ export const StyledSectionProducts = styled.section`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media (width < 750px) {
+    margin-top: 40px;
+  }
 `;

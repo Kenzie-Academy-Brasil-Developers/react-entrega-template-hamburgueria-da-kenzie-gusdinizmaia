@@ -22,7 +22,7 @@ export function ListCards({ array }: iListCard) {
           price={elem.price}
           img={elem.img}
           buttonText="Adicionar"
-          buttonType="buttonPrimary"
+          buttonType="buttonGrey3"
           buttonCallback={() => add(elem)}
         />
       ))}

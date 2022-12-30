@@ -12,11 +12,16 @@ export const StyledCard = styled.li`
   min-width: 230px;
   max-width: 300px;
 
+  :focus-within {
+    transition: 0.25 ease;
+    border: var(--color-primary-1) solid 2px;
+  }
+
   @media (width < 1300px) {
     width: 48%;
   }
 
-  @media (width < 1024px) {
+  @media (width < 750px) {
     margin-bottom: 20px;
   }
 
@@ -28,7 +33,6 @@ export const StyledCard = styled.li`
     gap: 15px;
 
     padding: 15px;
-
     height: 60%;
 
     h1 {
@@ -43,6 +47,12 @@ export const StyledCard = styled.li`
       font: var(--font-title-4);
       color: var(--color-primary-1);
     }
+    > button {
+      :focus {
+        transition: 0.25 ease-in-out;
+        background-color: var(--color-primary-1);
+      }
+    }
   }
 
   figure {
@@ -52,6 +62,8 @@ export const StyledCard = styled.li`
     width: 100%;
     height: 40%;
     background-color: var(--color-grey-4);
+
+    border-radius: 6px 6px 0 0;
 
     img {
       height: 100%;

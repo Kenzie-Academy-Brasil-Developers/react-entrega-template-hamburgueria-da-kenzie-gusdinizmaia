@@ -30,9 +30,11 @@ export const ContainerCart = styled.div`
     }
   }
   ul {
+    overflow-y: scroll;
+
     background-color: var(--color-grey-4);
+    padding: 5px 0;
     border-radius: 0 0 6px 6px;
-    padding: 0;
   }
 
   @media (width < 650px) {
@@ -62,7 +64,7 @@ export const StyledWrapper = styled.div`
   width: 100vw;
   height: 100vh;
 
-  padding-top: 60px;
+  padding: 60px 0;
 
   display: flex;
   justify-content: center;

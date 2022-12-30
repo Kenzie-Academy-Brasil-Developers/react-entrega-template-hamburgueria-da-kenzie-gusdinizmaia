@@ -52,6 +52,10 @@ export const IconRemove = styled(MdDelete)`
 
   color: var(--color-grey-2);
   cursor: pointer;
+
+  :hover {
+    color: #bdbdbd;
+  }
 `;
 
 export const StyledCount = styled.div`
@@ -67,6 +71,10 @@ export const StyledCount = styled.div`
     text-align: center;
 
     cursor: pointer;
+
+    :hover {
+      background-color: #bdbdbd;
+    }
   }
   > h4 {
     width: 40px;

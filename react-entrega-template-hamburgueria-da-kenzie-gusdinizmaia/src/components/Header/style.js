@@ -11,15 +11,9 @@ export const StyledHeader = styled.header`
   border-bottom: 1px solid var(--color-grey-3);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-  @media (width < 1024px) {
-    padding: 0 5%;
-  }
-
-  @media (width < 700px) {
-    flex-direction: column;
+  @media (width < 750px) {
     gap: 15px;
 
-    height: 140px;
     padding: 20px 5%;
 
     position: sticky;
