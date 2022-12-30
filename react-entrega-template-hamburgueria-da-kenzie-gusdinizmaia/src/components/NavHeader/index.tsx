@@ -9,13 +9,28 @@ export function NavHeader() {
   const { setModalCart, cart } = useContext(HomeContext);
   const [showInput, setShowInput] = useState(false);
   const { width } = useContext(UserContext);
+  const [animation, setAnimation] = useState(false);
 
   return (
     <StyledNav>
-      <Seach setShowInput={setShowInput} showInput={showInput} />
-      {width < 750 ? <IconSearch onClick={() => setShowInput(true)} /> : ""}
-      <div className="count__products">
-        <IconCart onClick={() => setModalCart(true)} />
+      <Seach
+        setShowInput={setShowInput}
+        showInput={showInput}
+        setAnimation={setAnimation}
+        animation={animation}
+      />
+      {width < 750 ? (
+        <IconSearch
+          onClick={() => {
+            setAnimation(true);
+            setShowInput(true);
+          }}
+        />
+      ) : (
+        ""
+      )}
+      <div onClick={() => setModalCart(true)} className="count__products">
+        <IconCart />
         <div>
           <p>{cart.length}</p>{" "}
         </div>

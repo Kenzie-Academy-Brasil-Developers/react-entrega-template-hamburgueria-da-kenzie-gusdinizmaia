@@ -1,7 +1,12 @@
 import { MdClose, MdSearch } from "react-icons/md";
 import styled, { keyframes } from "styled-components";
 
-const inputTransition = keyframes`
+interface iSearchProps {
+  width: number;
+  animation?: boolean;
+}
+
+export const inputTransition = keyframes`
   
       0% {
           transform: translateY(-80px);
@@ -11,7 +16,7 @@ const inputTransition = keyframes`
       }
   
   `;
-const inputNoTransition = keyframes`
+export const inputNoTransition = keyframes`
   
   0% {
       transform: translateY(0px);
@@ -30,17 +35,13 @@ export const StyledSearch = styled.div`
   align-items: center;
 
   position: relative;
-  animation: ${({ animation }) =>
-      animation ? inputTransition : inputNoTransition}
-    0.75s ease alternate;
+  animation: ${({ animation, width }: iSearchProps) =>
+      width < 750 ? (animation ? inputTransition : inputNoTransition) : ""}
+    0.85s ease alternate;
 
   > input {
     background-color: var(--color-white);
     width: 100%;
-
-    :focus {
-      border: 1.5px solid var(--color-grey-1);
-    }
   }
 
   @media (width < 750px) {

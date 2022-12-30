@@ -9,6 +9,12 @@ export const StyledNav = styled.nav`
 
   > .count__products {
     position: relative;
+    cursor: pointer;
+
+    :hover svg {
+      color: #bdbdbd;
+    }
+
     div {
       background-color: var(--color-primary-1);
       height: 18px;
@@ -24,13 +30,16 @@ export const StyledNav = styled.nav`
       p {
         font: var(--font-body-bold);
         color: var(--color-white);
+
+        :hover .count__products {
+          color: black;
+        }
       }
     }
   }
 `;
 
 export const IconCart = styled(MdShoppingCart)`
-  cursor: pointer;
   color: var(--color-grey-3);
   font-size: 27px;
 `;
@@ -38,10 +47,16 @@ export const IconExit = styled(MdExitToApp)`
   cursor: pointer;
   color: var(--color-grey-3);
   font-size: 27px;
+  :hover {
+    color: #bdbdbb;
+  }
 `;
 
 export const IconSearch = styled(MdSearch)`
   cursor: pointer;
   color: var(--color-grey-3);
   font-size: 27px;
+  :hover {
+    color: #bdbdbb;
+  }
 `;

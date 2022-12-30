@@ -8,21 +8,27 @@ import { IconSearchInput, StyledSearch, IconClose } from "./style";
 interface SeachProps {
   showInput: boolean;
   setShowInput: React.Dispatch<React.SetStateAction<boolean>>;
+  setAnimation: React.Dispatch<React.SetStateAction<boolean>>;
+  animation: boolean;
 }
 
-export function Seach({ showInput, setShowInput }: SeachProps) {
+export function Seach({
+  showInput,
+  setShowInput,
+  setAnimation,
+  animation,
+}: SeachProps) {
   const [inputSeach, setSeach] = useState(null);
   const { filter } = useContext(HomeContext);
 
-  const { width, height } = useContext(UserContext);
-  const [animation, setAnimation] = useState(true);
+  const { width } = useContext(UserContext);
 
   return (
     <React.Fragment>
       {width < 750 ? (
         <React.Fragment>
           {showInput ? (
-            <StyledSearch animation={animation}>
+            <StyledSearch width={width} animation={animation}>
               <Input
                 onChange={(e) => setSeach(e.target.value)}
                 placeholder="Digitar Pesquisa"
@@ -31,7 +37,7 @@ export function Seach({ showInput, setShowInput }: SeachProps) {
               <IconClose
                 onClick={() => {
                   setAnimation(false);
-                  setTimeout(() => setShowInput(false), 1000);
+                  setTimeout(() => setShowInput(false), 750);
                 }}
               />
             </StyledSearch>
@@ -40,7 +46,7 @@ export function Seach({ showInput, setShowInput }: SeachProps) {
           )}
         </React.Fragment>
       ) : (
-        <StyledSearch>
+        <StyledSearch width={width}>
           <Input
             onChange={(e) => setSeach(e.target.value)}
             placeholder="Digitar Pesquisa"

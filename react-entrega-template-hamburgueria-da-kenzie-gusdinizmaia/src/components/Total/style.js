@@ -13,6 +13,7 @@ export const StyledTotal = styled.div`
   gap: 25px;
 
   padding: 20px 10px;
+  border-radius: 0 0 6px 6px;
 
   position: relative;
 

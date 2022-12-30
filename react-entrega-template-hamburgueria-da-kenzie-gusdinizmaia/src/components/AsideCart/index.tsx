@@ -9,8 +9,6 @@ import { iProduct } from "../../contexts/HomeContext";
 export function AsideCart() {
   const { setModalCart, cart, remove, add, removeItem } =
     useContext(HomeContext);
-  // const [cartProductsFilter, setCartProductsFilter] = useState(null);
-  // const [count, setCount] = useState(null);
 
   function filterCart() {
     const filter = cart.filter((elem, index) => cart.indexOf(elem) === index);

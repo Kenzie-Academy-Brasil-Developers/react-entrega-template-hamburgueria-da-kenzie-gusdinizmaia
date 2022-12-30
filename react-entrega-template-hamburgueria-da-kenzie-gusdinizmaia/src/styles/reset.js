@@ -8,6 +8,6 @@ export const ResetStyles = createGlobalStyle`
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    outline: 0;
+
 }
 `;
